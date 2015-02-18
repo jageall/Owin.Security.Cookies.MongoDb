@@ -2,11 +2,11 @@
 <package>
   <metadata>
     <id>Owin.Security.Cookies.MongoDb</id>
-    <title>IdentityServer v3 Mongo Persistence</title>
+    <title>MongoDb implementation of IAuthenticationSessionStore</title>
     <version>$version$</version>
     <authors>James Geall</authors>
     <owners>James Geall</owners>
-    <projectUrl>https://github.com/jageall/MongoDbAuthenticationSessionStore</projectUrl>
+    <projectUrl>https://github.com/jageall/Owin.Security.Cookies.MongoDb</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MongoDb implementation of IAuthenticationSessionStore</description>
     <copyright>Copyright 2014</copyright>
@@ -22,6 +22,6 @@
     </dependencies>
   </metadata>
   <files>
-      <file src="Out\IdentityServer.Core.MongoDb.dll" target="lib\net45"/>
+      <file src="Out\Owin.Security.Cookies.MongoDb.dll" target="lib\net45"/>
     </files>
 </package>
