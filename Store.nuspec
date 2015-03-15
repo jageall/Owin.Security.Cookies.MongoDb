@@ -14,11 +14,11 @@
     <dependencies>
       <dependency id="Owin" version="1.0" />
       <dependency id="Microsoft.Owin"
-                  version="3.0.0" />
+                  version="3.0.1" />
       <dependency id="Microsoft.Owin.Security"
-                  version="3.0.0" />
+                  version="3.0.1" />
       <dependency id="Microsoft.Owin.Security.Cookies"
-                  version="3.0.0" />
+                  version="3.0.1" />
     </dependencies>
   </metadata>
   <files>
