@@ -99,7 +99,7 @@ namespace Tests
 
         private AuthenticationTicket CreateAuthenticationTicket()
         {
-            var identity = new ClaimsIdentity(new[] { new Claim("a", "b"), new Claim("c", "d") }, "test");
+            var identity = new ClaimsIdentity(new[] { new Claim("a", "b"), new Claim("c", "d"), new Claim("sub", Guid.NewGuid().ToString()),  }, "test");
             var properties = new AuthenticationProperties() { AllowRefresh = false, ExpiresUtc = DefaultTime() };
             return new AuthenticationTicket(identity, properties);
         }
