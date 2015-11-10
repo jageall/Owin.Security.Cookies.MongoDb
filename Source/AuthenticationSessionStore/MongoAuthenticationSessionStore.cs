@@ -22,6 +22,7 @@ using Microsoft.Owin.Security.Cookies;
 using MongoDB.Driver;
 using MongoDB.Driver.Wrappers;
 using MongoDB.Bson;
+using MongoDB.Driver.Builders;
 
 namespace Owin.Security.Cookies.MongoDB
 {
@@ -37,6 +38,7 @@ namespace Owin.Security.Cookies.MongoDB
             var connection = new MongoClient(options.ConnectionString).GetServer();
             _db = connection.GetDatabase(options.Database);
             _collection = options.Collection;
+            EnsureTtlIndexForAuthenticationTickets(_db,_collection);
         }
 
         private MongoCollection<BsonDocument> Collection
@@ -144,6 +146,17 @@ namespace Owin.Security.Cookies.MongoDB
             }
             var id = new ClaimsIdentity(claimset, authenticationType);
             return id;
+        }
+
+        private static void EnsureTtlIndexForAuthenticationTickets(MongoDatabase mongoDatabase, string collectionName)
+        {
+            var index = IndexKeys.Ascending("_expires");
+
+            var indexOptions = new IndexOptionsBuilder()
+                .SetTimeToLive(TimeSpan.FromSeconds(1))
+                .SetBackground(true);
+            var collection = mongoDatabase.GetCollection(collectionName);
+            collection.EnsureIndex(index, indexOptions);
         }
 
         public Task RemoveAsync(string key)
